@@ -5,12 +5,9 @@
     <title>Results</title>
 </head>
 <body>
- {{cover}}
- {{amazon}}
- {{review}}
-<table border="1" align="center">
+<table border="0" align="center" width="40%">
     {% for b in booklist %}
-    <tr><td>
+    <tr><td align="center">
 
         {% if cover %}
             <img src="{{ b[0] }}">
@@ -24,15 +21,11 @@
             <p> {{b[4]}} </p>
         </details>
         {% if b[5] != "" %}
-            {% if amazon%}
                 <strong>Amazon: </strong> <a href="{{ b[5] }}">{{b[1]}}</a>
-            {% endif %}
         {% endif %}
         <br>
         {% if b[6] != "" %}
-            {% if review %}
                 <strong>NYT Book Review: </strong> <a href="{{ b[6] }}">review link</a>
-            {% endif %}
         {% endif %}
     </details>
     <br><br><br>
