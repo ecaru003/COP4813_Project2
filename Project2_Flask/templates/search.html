@@ -9,34 +9,26 @@
     <form action="" method="POST" name="sample">
         {{ form.csrf_token }}
         {{ form.hidden_tag() }}
+        <table border="1" align="center" style="background: lightgrey; border: black">
+            <tr><td>
+                <p> Select Bestselling List</p>
+                <p>{{ form.chosen_list }}</p>
+            </td></tr>
+                <tr><td>
+                    <p> Limit Number of Entries To: </p>
+                    <p>{{form.chosen_limit }}</p>
+                </td></tr>
+                <tr align="left"><td>
+                        <p>Include Cover Image? {{form.option_cover}}</p>
+                </td></tr>
+                <tr><td style="padding-top: 50px">
+                    <input type="submit" value="Search">
+                </td></tr>
 
-        <p>First Name:
-            {{form.fname()}}
-        </p>
 
-        <p>Last Name:
-            {{form.lname()}}
-        </p>
+        </table>
 
-        <p>Panther ID:
-            {{form.panther_id()}}
-        </p>
-
-        <p>Start Date:
-            {{form.start_date()}}
-        </p>
-
-        <p>Major:
-            {{form.major()}}
-        </p>
-
-        <p>Campus:
-            {{form.campus()}}
-        </p>
-
-        <p>
-            <input type="submit" value="Submit">
-        </p>
     </form>
+
 </body>
 </html>

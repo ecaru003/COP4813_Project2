@@ -5,15 +5,39 @@
     <title>Results</title>
 </head>
 <body>
-    {% for i in response %}
-        <p>{{ i }}</p>
+ {{cover}}
+ {{amazon}}
+ {{review}}
+<table border="1" align="center">
+    {% for b in booklist %}
+    <tr><td>
+
+        {% if cover %}
+            <img src="{{ b[0] }}">
+        {% endif %}
+        <details>
+        <summary> {{ b[1] }} </summary>
+        <strong>Author: </strong> {{ b[2] }} <br>
+        <strong>Publisher: </strong> {{ b[3] }}
+        <details>
+            <summary> Description </summary>
+            <p> {{b[4]}} </p>
+        </details>
+        {% if b[5] != "" %}
+            {% if amazon%}
+                <strong>Amazon: </strong> <a href="{{ b[5] }}">{{b[1]}}</a>
+            {% endif %}
+        {% endif %}
+        <br>
+        {% if b[6] != "" %}
+            {% if review %}
+                <strong>NYT Book Review: </strong> <a href="{{ b[6] }}">review link</a>
+            {% endif %}
+        {% endif %}
+    </details>
+    <br><br><br>
+    </td></tr>
     {% endfor %}
-
-    {% if major == "it" %}
-        <em>Welcome to COP 4813</em>
-    {% else %}
-        <em>You are not authorized to take this course.</em>
-    {% endif %}
-
+</table>
 </body>
 </html>

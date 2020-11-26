@@ -25,18 +25,24 @@ def search():
     return render_template('search.html', form=my_sample_form)
 """
 
-@app.route('/')
-def WelcomeScreen():
+@app.route('/',      methods=['GET', 'POST'])
+@app.route('/books', methods=['GET', 'POST'])
+def search():
+    bookform = forms.BookListForm(request.form)
 
-    my_key_dict = main_functions.read_from_file("JSON_Files/api_key.json")
-    my_key= my_key_dict["NYT_API_Project2_Key"]
+    if request.method == "POST":
+        list = request.form["chosen_list"]
+        limit = request.form["chosen_limit"]
+        try:
+            limit = int(limit)
+        except ValueError:
+            limit = -1
 
-    #URL for books
-    url_books_base="https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key="
-    url_books=url_books_base+my_key
+        cover   = bookform.option_cover.data
+        booklist = forms.getBooks(list, limit)
+        response=[list, limit]
+        return render_template('results.html', booklist=booklist, cover=cover)
 
-    #URL for movies
-    url_movies_base="https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key="
-    url_movies=url_movies_base+my_key
 
-    main_functions.save_to_file(requests.get(url_books).json(), "JSON_Files/tmp_results.json")
+    return render_template('search.html', form=bookform)
+
