@@ -9,13 +9,14 @@
         {{ form.csrf_token }}
         {{ form.hidden_tag() }}
         <table border="1" align="center" style="background: lightgrey; border: black">
+            <th>Search the New York Times Best Sellers List!</th>
             <tr><td>
-                <p> Select Bestselling List</p>
+                <p> Select List</p>
                 <p>{{ form.chosen_list }}</p>
             </td></tr>
                 <tr><td>
                     <p> Limit Number of Entries To: </p>
-                    <p>{{form.chosen_limit }}</p>
+                    <p>(e.g., 5) {{form.chosen_limit }}</p>
                 </td></tr>
                 <tr align="left"><td>
                         <p>Include Cover Image? {{form.option_cover}}</p>

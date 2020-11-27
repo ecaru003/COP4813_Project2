@@ -1,6 +1,6 @@
 from Project2_Flask import app, main_functions
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, DateField, RadioField, SelectField, StringField, BooleanField
+from wtforms import IntegerField, SelectField, BooleanField
 import requests
 
 def getList():
@@ -41,19 +41,6 @@ def getBooks(list,limit):
         counter+=1
     return curr_entry
 
-
-class SampleForm(FlaskForm):
-    fname =      StringField("First Name")
-    lname =      StringField("Last Name")
-    panther_id = IntegerField("Panther ID")
-    start_date = DateField("Start Date", format='%m/%d/%Y')
-    major =      RadioField("Major",
-                       choices=[('it', 'Information Technology)'),
-                                ('cs','Computer Science')])
-    campus =     SelectField("Campus",
-                       choices=[('mmc', 'Modesto Maidique Campus)'),
-                                ('bbc', 'Biscayne Bay Campus'),
-                                ('ec', 'Engineering Center')])
 
 class BookListForm(FlaskForm):
 
